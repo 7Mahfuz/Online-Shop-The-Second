@@ -11,9 +11,9 @@ namespace OnlineShopping_Application.DLL
         IEnumerable<T> GetList(Func<T, bool> predicate = null);
         T GetModelById(int ModelId);
 
-        int InsertModel(T model);
-        int UpdateModel(T model);
-        int DeleteModel(T model);
+        bool InsertModel(T model);
+        bool UpdateModel(T model);
+        bool DeleteModel(T model);
         int Count(Func<T, bool> predicate = null);
         T GetModel(Func<T, bool> predicate = null);
 

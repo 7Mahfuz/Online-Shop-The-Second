@@ -1,5 +1,6 @@
 namespace OnlineShopping_Application.Migrations
 {
+    using OnlineShopping_Application.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +27,10 @@ namespace OnlineShopping_Application.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Category.AddOrUpdate(x => x.Name,new Category {Name="Bamboo" }, new Category { Name = "Bag" }
+            , new Category { Name = "Vesels" }, new Category { Name = "Crafts" });
+
+            
         }
     }
 }

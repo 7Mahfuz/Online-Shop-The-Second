@@ -28,6 +28,12 @@ namespace OnlineShopping_Application.Models
         {
         }
         public DbSet<Category> Category { get; set; }
+        public DbSet<Category> Cart { get; set; }
+        public DbSet<Category> CartToDeliver { get; set; }
+        public DbSet<Category> Order { get; set; }
+        public DbSet<Category> Payment { get; set; }
+        public DbSet<Category> Product { get; set; }
+        public DbSet<Category> Stock { get; set; }
 
         public static ApplicationDbContext Create()
         {
