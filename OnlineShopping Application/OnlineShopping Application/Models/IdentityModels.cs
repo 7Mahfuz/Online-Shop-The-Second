@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -28,12 +29,14 @@ namespace OnlineShopping_Application.Models
         {
         }
         public DbSet<Category> Category { get; set; }
-        public DbSet<Category> Cart { get; set; }
-        public DbSet<Category> CartToDeliver { get; set; }
-        public DbSet<Category> Order { get; set; }
-        public DbSet<Category> Payment { get; set; }
-        public DbSet<Category> Product { get; set; }
-        public DbSet<Category> Stock { get; set; }
+        public DbSet<Stock> Stock { get; set; }
+        public DbSet<Cart> Cart { get; set; }
+        public DbSet<CartToDeliver> CartToDeliver { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<Payment> Payment { get; set; }
+        public DbSet<Product> Product { get; set; }
+
+       
 
         public static ApplicationDbContext Create()
         {

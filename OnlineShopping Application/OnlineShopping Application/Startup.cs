@@ -15,7 +15,7 @@ namespace OnlineShopping_Application
             CreateRolesandUsers();               
         }
         // In this method we will create default User roles and Admin user for login    
-        private void CreateRolesandUsers()
+        public void CreateRolesandUsers()
         {
             ApplicationDbContext context = new ApplicationDbContext();
 

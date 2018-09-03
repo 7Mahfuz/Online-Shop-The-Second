@@ -118,4 +118,12 @@ namespace OnlineShopping_Application.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class UserInfoViewModel
+    {
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
+    }
 }

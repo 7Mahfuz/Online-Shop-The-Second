@@ -196,8 +196,13 @@
     <Compile Include="BLL\ProductManager.cs" />
     <Compile Include="BLL\StockManager.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="DLL\Repository.cs" />
     <Compile Include="DLL\UnitOfWork.cs" />
     <Compile Include="DLL\_IRepository.cs" />
@@ -211,6 +216,10 @@
     <Compile Include="Migrations\201808231031046_two.cs" />
     <Compile Include="Migrations\201808231031046_two.Designer.cs">
       <DependentUpon>201808231031046_two.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809031355124_Three.cs" />
+    <Compile Include="Migrations\201809031355124_Three.Designer.cs">
+      <DependentUpon>201809031355124_Three.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Cart.cs" />
@@ -288,6 +297,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Category\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\Product\" />
+    <Folder Include="Views\Stock\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -308,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808231031046_two.resx">
       <DependentUpon>201808231031046_two.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809031355124_Three.resx">
+      <DependentUpon>201809031355124_Three.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
