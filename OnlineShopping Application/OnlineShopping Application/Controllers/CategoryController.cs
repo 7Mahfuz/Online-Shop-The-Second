@@ -1,38 +1,38 @@
-﻿using System;
+﻿using OnlineShopping_Application.BLL;
+using OnlineShopping_Application.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace OnlineShopping_Application.Controllers
 {
     public class CategoryController : Controller
     {
+        CategoryManager aCategoryManager = new CategoryManager();
+
         // GET: Category
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Category> categories = aCategoryManager.GetList();
+            return View(categories);
         }
-
-        // GET: Category/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
+       
         // GET: Category/Create
-        public ActionResult Create()
+        public ActionResult Add()
         {
             return View();
         }
 
         // POST: Category/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Add(Category aCategory)
         {
             try
             {
-                // TODO: Add insert logic here
+                string msg = aCategoryManager.Save(aCategory);
 
                 return RedirectToAction("Index");
             }
@@ -45,16 +45,18 @@ namespace OnlineShopping_Application.Controllers
         // GET: Category/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Category aCategory = new Category();
+            aCategory = aCategoryManager.GetACategory(id);
+            return View(aCategory);
         }
 
         // POST: Category/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Category aCategory)
         {
             try
             {
-                // TODO: Add update logic here
+                String msg = aCategoryManager.Update(aCategory);
 
                 return RedirectToAction("Index");
             }
@@ -67,16 +69,19 @@ namespace OnlineShopping_Application.Controllers
         // GET: Category/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Category aCategory = new Category();
+            aCategory = aCategoryManager.GetACategory(id);
+            return View(aCategory);
+            
         }
 
         // POST: Category/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Category aCategory)
         {
             try
             {
-                // TODO: Add delete logic here
+                string msg = aCategoryManager.Delete(aCategory);
 
                 return RedirectToAction("Index");
             }

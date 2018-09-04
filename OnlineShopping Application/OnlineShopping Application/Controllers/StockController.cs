@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OnlineShopping_Application.BLL;
+using OnlineShopping_Application.Models;
 
 namespace OnlineShopping_Application.Controllers
 {

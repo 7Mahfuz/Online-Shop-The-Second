@@ -20,25 +20,61 @@ namespace OnlineShopping_Application.BLL
             this.aUnitOfWork = _uow;
         }
 
-        public void Save(Category category)
+        public string Save(Category category)
         {
-           bool flag= aUnitOfWork.Repository<Category>().InsertModel(category);
+            if (IsExist(category.Id))
+            {
+                return "Exist";
+            }
+            else
+            {
+                bool flag = aUnitOfWork.Repository<Category>().InsertModel(category);
+                aUnitOfWork.Save();
+                if (flag) return "Ok";
+                else return "Failed";
+                
+            }
         }
-        public void IsExist()
+        public bool IsExist(int CategoryId)
         {
+            Category aCategory = new Category();
+            aCategory = aUnitOfWork.Repository<Category>().GetModelById(CategoryId);
+            if(aCategory==null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public string Delete(Category aCategory)
+        {
+            bool flag = aUnitOfWork.Repository<Category>().DeleteModel(aCategory);
+            aUnitOfWork.Save();
+            if (flag) return "Deleted";
+            else return "Failed";
+        }
+        public string Update(Category aCategory)
+        {
+            bool flag = aUnitOfWork.Repository<Category>().UpdateModel(aCategory);
+            aUnitOfWork.Save();
+            if (flag) return "Updated";
+            else return "Failed";
 
         }
-        public void Delete()
+        public IEnumerable<Category> GetList()
         {
-
+            IEnumerable<Category> categories = new List<Category>();//
+            categories = aUnitOfWork.Repository<Category>().GetList();
+            return categories;
         }
-        public void Update()
-        {
 
-        }
-        public void Get()
+        public Category GetACategory(int id)
         {
-
+            Category aCategory = new Category();
+            aCategory = aUnitOfWork.Repository<Category>().GetModelById(id);
+            return aCategory;
         }
     }
 }

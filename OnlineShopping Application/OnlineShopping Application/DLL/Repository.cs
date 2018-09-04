@@ -38,9 +38,7 @@ namespace OnlineShopping_Application.DLL
 
         public bool DeleteModel(T model)
         {
-            _DbSet.Attach(model);
-            _DbSet.Remove(model);
-
+           
             bool flag = true;
             try {
                 _DbSet.Attach(model);
@@ -74,7 +72,7 @@ namespace OnlineShopping_Application.DLL
         public bool InsertModel(T model)
         {
             bool flag = true;
-            try { _DbSet.Add(model); }
+            try { _DbSet.Attach(model); _DbSet.Add(model); }
             catch { flag = false; };
 
             return flag;
@@ -83,7 +81,10 @@ namespace OnlineShopping_Application.DLL
         public bool UpdateModel(T model)
         {           
             bool flag = true;
-            try { _DbSet.Attach(model); _DbSet.AddOrUpdate(model); }
+            try {// _DbSet.Attach(model);
+                _DbSet.AddOrUpdate(model);
+               
+            }
             catch { flag = false; };
 
             return flag;
