@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using OnlineShopping_Application.BLL;
 using OnlineShopping_Application.Models;
+using Microsoft.AspNet.Identity;
 
 namespace OnlineShopping_Application.Controllers
 {
@@ -19,12 +20,15 @@ namespace OnlineShopping_Application.Controllers
         // GET: Cart/Details/5
         public ActionResult Details(int id)
         {
+            
+           
             return View();
         }
 
         // GET: Cart/Create
         public ActionResult Create()
         {
+            string currentUserId = User.Identity.GetUserId();
             return View();
         }
 

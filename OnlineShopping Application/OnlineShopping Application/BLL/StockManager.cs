@@ -65,8 +65,11 @@ namespace OnlineShopping_Application.BLL
             if (flag) return "Deleted";
             else return "Failed";
         }
-        public string Update(Stock aStock)
+        public string Update(StockViewModel aStockViewModel)
         {
+            Stock aStock = aUnitOfWork.Repository<Stock>().GetModelById(aStockViewModel.StockId);
+            aStock.ProductId = aStockViewModel.ProductId;
+            aStock.Quantity = aStockViewModel.Quantity;
             bool flag = aUnitOfWork.Repository<Stock>().UpdateModel(aStock);
             aUnitOfWork.Save();
             if (flag) return "Updated";

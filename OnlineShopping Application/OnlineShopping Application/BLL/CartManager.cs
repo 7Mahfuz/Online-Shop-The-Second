@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using OnlineShopping_Application.DLL;
 using OnlineShopping_Application.Models;
+using Microsoft.AspNet.Identity;
+
 
 namespace OnlineShopping_Application.BLL
 {
@@ -20,20 +22,33 @@ namespace OnlineShopping_Application.BLL
             this.aUnitOfWork = _uow;
         }
 
-        public void Save(Cart aCart)
+        public string Save(int ProductId,int Quantity,string UserId)
         {
-
+            Cart aCart = new Cart();
+            aCart.ProductId = ProductId;aCart.Quantity = Quantity;aCart.UserId = UserId;
+            aCart.IsActive = true;
+            bool flag = aUnitOfWork.Repository<Cart>().InsertModel(aCart);
+            if(flag)
+            {
+                return "Added";
+            }
+            else { return "Failed"; }
+            
         }
-        public void IsExist()
+        
+        public string Delete(Cart aCart)
         {
-
+            bool flag = aUnitOfWork.Repository<Cart>().DeleteModel(aCart);
+            aUnitOfWork.Save();
+            if (flag) return "Deleted";
+            else return "Failed";
         }
-        public void Delete()
+        public string Update(Cart aCart)
         {
-
-        }
-        public void Update()
-        {
+            bool flag = aUnitOfWork.Repository<Cart>().UpdateModel(aCart);
+            aUnitOfWork.Save();
+            if (flag) return "Updated";
+            else return "Failed";
 
         }
         public void Get()

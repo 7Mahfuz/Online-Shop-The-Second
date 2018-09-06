@@ -28,6 +28,8 @@ namespace OnlineShopping_Application.Controllers
         // GET: Stock/Create
         public ActionResult AddOrUpdate(int ProductId)
         {
+           
+
             StockViewModel stockViewModel = aStockManager.GetAStockViewModel(ProductId);
             return View(stockViewModel);
         }
@@ -49,18 +51,21 @@ namespace OnlineShopping_Application.Controllers
         }
 
         // GET: Stock/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int ProductId)
         {
-            return View();
+           
+           StockViewModel stockViewModel = aStockManager.GetAStockViewModel(ProductId);
+            return View(stockViewModel);
+            
         }
 
         // POST: Stock/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int StockId, StockViewModel stockViewModel)
         {
             try
             {
-                // TODO: Add update logic here
+                string msg = aStockManager.Update(stockViewModel);
 
                 return RedirectToAction("Index");
             }
@@ -70,26 +75,6 @@ namespace OnlineShopping_Application.Controllers
             }
         }
 
-        // GET: Stock/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Stock/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }
