@@ -10,31 +10,32 @@ namespace OnlineShopping_Application.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
+        CategoryManager aCategoryManager = new CategoryManager();
+        ProductManager aProductManager = new ProductManager();
+
+        // GET: Category
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Product> products = aProductManager.GetList();
+            return View(products);
         }
 
-        // GET: Product/Details/5
-        public ActionResult Details(int id)
+        // GET: Category/Create
+        public ActionResult Add()
         {
+            IEnumerable<Category> categories = new List<Category>();
+            ViewBag.categoryList = new SelectList(categories, "Id", "Name");
+
             return View();
         }
 
-        // GET: Product/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Product/Create
+        // POST: Category/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Add(Product aProduct)
         {
             try
             {
-                // TODO: Add insert logic here
+                string msg = aProductManager.Save(aProduct);
 
                 return RedirectToAction("Index");
             }
@@ -44,19 +45,24 @@ namespace OnlineShopping_Application.Controllers
             }
         }
 
-        // GET: Product/Edit/5
+        // GET: Category/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            IEnumerable<Category> categories = new List<Category>();
+            ViewBag.categoryList = new SelectList(categories, "Id", "Name");
+
+            Product aProduct = new Product();
+           aProduct = aProductManager.GetAProduct(id);
+            return View(aProduct);
         }
 
-        // POST: Product/Edit/5
+        // POST: Category/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id,Product aProduct)
         {
             try
             {
-                // TODO: Add update logic here
+                String msg = aProductManager.Update(aProduct);
 
                 return RedirectToAction("Index");
             }
@@ -66,19 +72,22 @@ namespace OnlineShopping_Application.Controllers
             }
         }
 
-        // GET: Product/Delete/5
+        // GET: Category/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Product aProduct = new Product();
+            aProduct = aProductManager.GetAProduct(id);
+            return View(aProduct);
+
         }
 
-        // POST: Product/Delete/5
+        // POST: Category/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id,Product aProduct)
         {
             try
             {
-                // TODO: Add delete logic here
+                string msg = aProductManager.Delete(aProduct);
 
                 return RedirectToAction("Index");
             }

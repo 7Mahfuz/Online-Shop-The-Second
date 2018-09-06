@@ -20,25 +20,60 @@ namespace OnlineShopping_Application.BLL
             this.aUnitOfWork = _uow;
         }
 
-        public void Save()
+        public string Save(Product aProduct)
         {
+            if (IsExist(aProduct.Id))
+            {
+                return "Exist";
+            }
+            else
+            {
+                bool flag = aUnitOfWork.Repository<Product>().InsertModel(aProduct);                             
+                
+                aUnitOfWork.Save();
+                if (flag) return "Ok";
+                else return "Failed";
 
+            }
         }
-        public void IsExist()
+        public bool IsExist(int ProductId)
         {
-
+            Product aProduct = new Product();
+            aProduct = aUnitOfWork.Repository<Product>().GetModelById(ProductId);
+            if (aProduct == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
-        public void Delete()
+        public string Delete(Product aProduct)
         {
-
+            bool flag = aUnitOfWork.Repository<Product>().DeleteModel(aProduct);
+            aUnitOfWork.Save();
+            if (flag) return "Deleted";
+            else return "Failed";
         }
-        public void Update()
+        public string Update(Product aProduct)
         {
-
+            bool flag = aUnitOfWork.Repository<Product>().UpdateModel(aProduct);
+            aUnitOfWork.Save();
+            if (flag) return "Updated";
+            else return "Failed";
         }
-        public void Get()
+        public IEnumerable<Product> GetList()
         {
-
+            IEnumerable<Product> products = new List<Product>();//
+            products = aUnitOfWork.Repository<Product>().GetList();
+            return products;
+        }
+        public Product GetAProduct(int id)
+        {
+            Product aProduct = new Product();
+            aProduct = aUnitOfWork.Repository<Product>().GetModelById(id);
+            return aProduct;
         }
     }
 }

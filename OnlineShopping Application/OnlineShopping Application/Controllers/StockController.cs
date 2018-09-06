@@ -10,10 +10,13 @@ namespace OnlineShopping_Application.Controllers
 {
     public class StockController : Controller
     {
+        StockManager aStockManager = new StockManager();
+
         // GET: Stock
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<StockViewModel> stockViewModels = aStockManager.GetList();
+            return View(stockViewModels);
         }
 
         // GET: Stock/Details/5
@@ -23,18 +26,19 @@ namespace OnlineShopping_Application.Controllers
         }
 
         // GET: Stock/Create
-        public ActionResult Create()
+        public ActionResult AddOrUpdate(int ProductId)
         {
-            return View();
+            StockViewModel stockViewModel = aStockManager.GetAStockViewModel(ProductId);
+            return View(stockViewModel);
         }
 
         // POST: Stock/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult AddOrUpdate(StockViewModel stockViewModel)
         {
             try
             {
-                // TODO: Add insert logic here
+                string msg = aStockManager.Save(stockViewModel);
 
                 return RedirectToAction("Index");
             }
