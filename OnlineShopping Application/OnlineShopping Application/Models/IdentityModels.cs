@@ -12,7 +12,8 @@ namespace OnlineShopping_Application.Models
     public class ApplicationUser : IdentityUser
     {
         public string Address { get; set; }
-       // public  int Id { get; set; }
+        public string ImageUrl { get; set; }
+       
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

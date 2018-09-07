@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BLL\CartManager.cs" />
+    <Compile Include="BLL\CartToDeliverManager.cs" />
     <Compile Include="BLL\CategoryManager.cs" />
     <Compile Include="BLL\OrderManager.cs" />
     <Compile Include="BLL\PaymentManager.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CheckOutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -305,6 +307,7 @@
     <Folder Include="Image\Product\" />
     <Folder Include="Image\User\" />
     <Folder Include="Views\Cart\" />
+    <Folder Include="Views\CheckOut\" />
     <Folder Include="Views\Order\" />
     <Folder Include="Views\Product\" />
     <Folder Include="Views\Stock\" />

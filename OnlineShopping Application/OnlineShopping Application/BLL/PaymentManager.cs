@@ -20,8 +20,20 @@ namespace OnlineShopping_Application.BLL
             this.aUnitOfWork = _uow;
         }
 
-        public void Save()
+        public int Save(Payment aPayment,string UserId)
         {
+            aPayment.IsActive = true;aPayment.UserId = UserId;
+            bool flag = aUnitOfWork.Repository<Payment>().InsertModel(aPayment);
+
+            if(flag)
+            {
+                Payment aPayment2 = GetAPayment(UserId);
+                return aPayment2.Id;
+            }
+            else
+            {
+                return 0;
+            }
 
         }
         public void IsExist()
@@ -36,9 +48,10 @@ namespace OnlineShopping_Application.BLL
         {
 
         }
-        public void Get()
+        public Payment GetAPayment(string UserId)
         {
-
+            Payment payment = aUnitOfWork.Repository<Payment>().GetModel(x => x.UserId == UserId && x.IsActive == true);
+            return payment;
         }
     }
 }

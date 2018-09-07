@@ -16,5 +16,6 @@ namespace OnlineShopping_Application.Models
 
         public bool IsDone { get; set; }
         public bool IsActive { get; set; }
+        public string DeliveryAddress { get; set; }
     }
 }
