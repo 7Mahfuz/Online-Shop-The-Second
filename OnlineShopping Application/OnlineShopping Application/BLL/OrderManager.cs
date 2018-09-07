@@ -20,9 +20,22 @@ namespace OnlineShopping_Application.BLL
             this.aUnitOfWork = _uow;
         }
 
-        public void Save()
+        public void Save(int paymentId,string userId,string address)
         {
+            IEnumerable<CartToDeliver> cartToDelivers = new List<CartToDeliver>();
 
+            foreach(CartToDeliver aCart in cartToDelivers)
+            {
+                Order aOrder = new Order();
+                aOrder.CartToDeliverId = aCart.Id;
+                aOrder.PaymentId = paymentId;
+                aOrder.UserId = userId;
+                aOrder.DeliveryAddress = address;
+                aOrder.IsActive = true;
+                aOrder.IsDone = false;
+
+                bool flag = aUnitOfWork.Repository<Order>().InsertModel(aOrder);
+            }
         }
         public void IsExist()
         {

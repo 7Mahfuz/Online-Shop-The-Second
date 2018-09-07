@@ -192,6 +192,7 @@
     <Compile Include="BLL\CartManager.cs" />
     <Compile Include="BLL\CartToDeliverManager.cs" />
     <Compile Include="BLL\CategoryManager.cs" />
+    <Compile Include="BLL\CustomUserManager.cs" />
     <Compile Include="BLL\OrderManager.cs" />
     <Compile Include="BLL\PaymentManager.cs" />
     <Compile Include="BLL\ProductManager.cs" />
