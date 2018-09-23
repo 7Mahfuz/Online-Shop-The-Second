@@ -224,6 +224,14 @@
     <Compile Include="Migrations\201809031355124_Three.Designer.cs">
       <DependentUpon>201809031355124_Three.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809232051149_Four.cs" />
+    <Compile Include="Migrations\201809232051149_Four.Designer.cs">
+      <DependentUpon>201809232051149_Four.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809232211204_Five.cs" />
+    <Compile Include="Migrations\201809232211204_Five.Designer.cs">
+      <DependentUpon>201809232211204_Five.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Cart.cs" />
     <Compile Include="Models\EntityModels\CartToDeliver.cs" />
@@ -242,14 +250,26 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\NavHover.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\Default\01.jpg" />
+    <Content Include="Image\Default\02.jpg" />
+    <Content Include="Image\Default\03.jpg" />
+    <Content Include="Image\Default\04.png" />
+    <Content Include="Image\Default\05.png" />
+    <Content Include="Image\Default\06.png" />
+    <Content Include="Image\Default\07.jpg" />
+    <Content Include="Image\Default\08.jpg" />
+    <Content Include="Image\Default\09.jpg" />
+    <Content Include="Image\Default\10.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -302,6 +322,8 @@
     <Content Include="Views\Category\Add.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Product\Add.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -310,7 +332,6 @@
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\CheckOut\" />
     <Folder Include="Views\Order\" />
-    <Folder Include="Views\Product\" />
     <Folder Include="Views\Stock\" />
   </ItemGroup>
   <ItemGroup>
@@ -335,6 +356,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809031355124_Three.resx">
       <DependentUpon>201809031355124_Three.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809232051149_Four.resx">
+      <DependentUpon>201809232051149_Four.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809232211204_Five.resx">
+      <DependentUpon>201809232211204_Five.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

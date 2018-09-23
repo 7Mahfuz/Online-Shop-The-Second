@@ -9,6 +9,7 @@ namespace OnlineShopping_Application.BLL
 {
     public class ProductManager
     {
+
         private UnitOfWork aUnitOfWork = null;
 
         public ProductManager()
@@ -67,6 +68,14 @@ namespace OnlineShopping_Application.BLL
         {
             IEnumerable<Product> products = new List<Product>();//
             products = aUnitOfWork.Repository<Product>().GetList();
+          
+            foreach (Product product in products)
+            {
+                Category aCategory = aUnitOfWork.Repository<Category>().GetModelById(product.CategoryId);
+                product.categoryName = aCategory.Name;
+               
+            }
+
             return products;
         }
         public Product GetAProduct(int id)

@@ -30,9 +30,9 @@ namespace OnlineShopping_Application.BLL
 
             if (IsExist(aStock.Id))
             {
-                string msg = Update(aStock);
+               // string msg = Update(aStock);
 
-                return msg;
+                return null;
             }
             else
             {

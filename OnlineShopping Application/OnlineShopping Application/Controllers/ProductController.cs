@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,7 +24,7 @@ namespace OnlineShopping_Application.Controllers
         // GET: Category/Create
         public ActionResult Add()
         {
-            IEnumerable<Category> categories = new List<Category>();
+            IEnumerable<Category> categories = aCategoryManager.GetList();
             ViewBag.categoryList = new SelectList(categories, "Id", "Name");
 
             return View();
@@ -35,6 +36,12 @@ namespace OnlineShopping_Application.Controllers
         {
             try
             {
+                string fileName = Path.GetFileNameWithoutExtension(aProduct.ImageFile.FileName);
+                string extention = Path.GetExtension(aProduct.ImageFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extention;
+                aProduct.ImageUrl = "~/Image/Product/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Image/Product/"), fileName);
+                aProduct.ImageFile.SaveAs(fileName);
                 string msg = aProductManager.Save(aProduct);
 
                 return RedirectToAction("Index");
