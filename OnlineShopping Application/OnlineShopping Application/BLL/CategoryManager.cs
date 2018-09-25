@@ -65,8 +65,7 @@ namespace OnlineShopping_Application.BLL
         }
         public IEnumerable<Category> GetList()
         {
-            IEnumerable<Category> categories = new List<Category>();//
-            categories = aUnitOfWork.Repository<Category>().GetList();
+            IEnumerable<Category> categories = aUnitOfWork.Repository<Category>().GetList();
             return categories;
         }
 

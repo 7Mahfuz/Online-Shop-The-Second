@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using OnlineShopping_Application.BLL;
 using OnlineShopping_Application.Models;
 
@@ -13,14 +14,14 @@ namespace OnlineShopping_Application.Controllers
     {
         CategoryManager aCategoryManager = new CategoryManager();
         ProductManager aProductManager = new ProductManager();
-
+        CartManager aCartManager=new CartManager();
         // GET: Category
         public ActionResult Index()
         {
             IEnumerable<Product> products = aProductManager.GetList();
             return View(products);
         }
-
+       
         // GET: Category/Create
         public ActionResult Add()
         {
@@ -51,6 +52,8 @@ namespace OnlineShopping_Application.Controllers
                 return View();
             }
         }
+
+        
 
         // GET: Category/Edit/5
         public ActionResult Edit(int id)
@@ -102,6 +105,27 @@ namespace OnlineShopping_Application.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Details(int productId)
+        {
+            Product aProduct = aProductManager.GetAProduct(productId);
+            ProductDetailViewModel aProductDetailViewModel = new ProductDetailViewModel();
+            aProductDetailViewModel.Id = aProduct.Id;
+            aProductDetailViewModel.Name = aProduct.Name;
+            aProductDetailViewModel.Description = aProduct.Description;
+            aProductDetailViewModel.Price = aProduct.Price;
+            aProductDetailViewModel.Qunatity = 0;
+
+            return View(aProductDetailViewModel);
+        }
+        [HttpPost]
+        public ActionResult Details(ProductDetailViewModel aProductDetailViewModel)
+        {
+            string currentUserId = User.Identity.GetUserId();
+            aCartManager.SaveToCart(aProductDetailViewModel, currentUserId);
+
+            return View(aProductDetailViewModel);
         }
     }
 }

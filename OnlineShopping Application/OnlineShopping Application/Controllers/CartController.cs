@@ -11,12 +11,19 @@ namespace OnlineShopping_Application.Controllers
 {
     public class CartController : Controller
     {
+        CartManager aCartManager=new CartManager();
         // GET: Cart
         public ActionResult Index()
         {
             return View();
         }
 
+        public ActionResult UserCartList()
+        {
+            string currentUserId = User.Identity.GetUserId();
+           IEnumerable<Cart>carts=  aCartManager.GetUserCartList(currentUserId);
+            return View();
+        }
         // GET: Cart/Details/5
         public ActionResult Details(int id)
         {

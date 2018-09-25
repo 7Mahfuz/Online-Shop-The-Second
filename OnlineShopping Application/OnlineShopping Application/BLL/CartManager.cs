@@ -22,10 +22,10 @@ namespace OnlineShopping_Application.BLL
             this.aUnitOfWork = _uow;
         }
 
-        public string Save(int ProductId,int Quantity,string UserId)
+        public string SaveToCart(ProductDetailViewModel aProductDetailViewModel,string UserId)
         {
             Cart aCart = new Cart();
-            aCart.ProductId = ProductId;aCart.Quantity = Quantity;aCart.UserId = UserId;
+            aCart.ProductId = aProductDetailViewModel.Id;aCart.Quantity = aProductDetailViewModel.Qunatity;aCart.UserId = UserId;
             aCart.IsActive = true;
             bool flag = aUnitOfWork.Repository<Cart>().InsertModel(aCart);
             if(flag)
@@ -51,9 +51,10 @@ namespace OnlineShopping_Application.BLL
             else return "Failed";
 
         }
-        public void Get()
+        public IEnumerable<Cart> GetUserCartList(string userId)
         {
-
+            IEnumerable<Cart> carts = aUnitOfWork.Repository<Cart>().GetList(x => x.UserId == userId);
+            return carts;
         }
     }
 }

@@ -11,12 +11,14 @@ namespace OnlineShopping_Application.Controllers
     public class StockController : Controller
     {
         StockManager aStockManager = new StockManager();
+        CategoryManager aCategoryManager=new CategoryManager();
+        ProductManager aProductManager=new ProductManager();
 
         // GET: Stock
         public ActionResult Index()
         {
-            IEnumerable<StockViewModel> stockViewModels = aStockManager.GetList();
-            return View(stockViewModels);
+            //IEnumerable<StockViewModel> stockViewModels = aStockManager.GetList();
+            return View();
         }
 
         // GET: Stock/Details/5
@@ -26,23 +28,41 @@ namespace OnlineShopping_Application.Controllers
         }
 
         // GET: Stock/Create
-        public ActionResult AddOrUpdate(int ProductId)
+        public ActionResult Add()
         {
-           
+            IEnumerable<Category> categories = aCategoryManager.GetList();
+            ViewBag.CategoryList = new SelectList(categories, "Id", "Name");
 
-            StockViewModel stockViewModel = aStockManager.GetAStockViewModel(ProductId);
-            return View(stockViewModel);
+            List<Product>products=new List<Product>();
+            ViewBag.ProductList=new SelectList(products, "Id", "Name");
+            return View();
         }
 
+        public JsonResult GetProductList(int categoryId)
+        {
+            IEnumerable<Product> products = aProductManager.GetProductListCategoryId(categoryId);
+            return Json(products, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetStock(int productId)
+        {
+            Stock aStock = aStockManager.GetAProductStock(productId);
+            return Json(aStock, JsonRequestBehavior.AllowGet);
+        }
         // POST: Stock/Create
         [HttpPost]
-        public ActionResult AddOrUpdate(StockViewModel stockViewModel)
+        public ActionResult Add(StockViewModel stockViewModel)
         {
             try
             {
+                IEnumerable<Category> categories = aCategoryManager.GetList();
+                ViewBag.CategoryList = new SelectList(categories, "Id", "Name");
+
+                List<Product> products = new List<Product>();
+                ViewBag.ProductList = new SelectList(products, "Id", "Name");
                 string msg = aStockManager.Save(stockViewModel);
 
-                return RedirectToAction("Index");
+                ModelState.Clear();
+                return View(new StockViewModel());
             }
             catch
             {
@@ -54,8 +74,8 @@ namespace OnlineShopping_Application.Controllers
         public ActionResult Edit(int ProductId)
         {
            
-           StockViewModel stockViewModel = aStockManager.GetAStockViewModel(ProductId);
-            return View(stockViewModel);
+           //StockViewModel stockViewModel = aStockManager.GetAStockViewModel(ProductId);
+            return View();
             
         }
 
@@ -65,7 +85,7 @@ namespace OnlineShopping_Application.Controllers
         {
             try
             {
-                string msg = aStockManager.Update(stockViewModel);
+                //string msg = aStockManager.Update(stockViewModel);
 
                 return RedirectToAction("Index");
             }

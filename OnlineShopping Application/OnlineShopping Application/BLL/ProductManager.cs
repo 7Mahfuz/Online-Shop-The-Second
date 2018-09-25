@@ -30,8 +30,8 @@ namespace OnlineShopping_Application.BLL
             else
             {
                 bool flag = aUnitOfWork.Repository<Product>().InsertModel(aProduct);                             
-                
                 aUnitOfWork.Save();
+
                 if (flag) return "Ok";
                 else return "Failed";
 
@@ -66,9 +66,7 @@ namespace OnlineShopping_Application.BLL
         }
         public IEnumerable<Product> GetList()
         {
-            IEnumerable<Product> products = new List<Product>();//
-            products = aUnitOfWork.Repository<Product>().GetList();
-          
+            IEnumerable<Product> products = aUnitOfWork.Repository<Product>().GetList();
             foreach (Product product in products)
             {
                 Category aCategory = aUnitOfWork.Repository<Category>().GetModelById(product.CategoryId);
@@ -78,6 +76,19 @@ namespace OnlineShopping_Application.BLL
 
             return products;
         }
+
+        public IEnumerable<Product> GetProductListCategoryId(int categoryId)
+        {
+            IEnumerable<Product> products = aUnitOfWork.Repository<Product>().GetList(x=>x.CategoryId==categoryId);
+            foreach (Product product in products)
+            {
+                Category aCategory = aUnitOfWork.Repository<Category>().GetModelById(product.CategoryId);
+                product.categoryName = aCategory.Name;
+
+            }
+
+            return products;
+        } 
         public Product GetAProduct(int id)
         {
             Product aProduct = new Product();
