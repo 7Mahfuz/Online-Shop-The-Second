@@ -107,13 +107,14 @@ namespace OnlineShopping_Application.Controllers
             }
         }
 
-        public ActionResult Details(int productId)
+        public ActionResult Details(int id)
         {
-            Product aProduct = aProductManager.GetAProduct(productId);
+            Product aProduct = aProductManager.GetAProduct(Convert.ToInt32(id));
             ProductDetailViewModel aProductDetailViewModel = new ProductDetailViewModel();
             aProductDetailViewModel.Id = aProduct.Id;
             aProductDetailViewModel.Name = aProduct.Name;
             aProductDetailViewModel.Description = aProduct.Description;
+            aProductDetailViewModel.ImageUrl = aProduct.ImageUrl;
             aProductDetailViewModel.Price = aProduct.Price;
             aProductDetailViewModel.Qunatity = 0;
 

@@ -21,8 +21,8 @@ namespace OnlineShopping_Application.Controllers
         public ActionResult UserCartList()
         {
             string currentUserId = User.Identity.GetUserId();
-           IEnumerable<Cart>carts=  aCartManager.GetUserCartList(currentUserId);
-            return View();
+           IEnumerable<UserCartListShowViewModel>carts=  aCartManager.GetUserCartList(currentUserId);
+            return View(carts);
         }
         // GET: Cart/Details/5
         public ActionResult Details(int id)

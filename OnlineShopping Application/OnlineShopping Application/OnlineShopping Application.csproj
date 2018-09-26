@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201809232211204_Five.Designer.cs">
       <DependentUpon>201809232211204_Five.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809261612090_Six.cs" />
+    <Compile Include="Migrations\201809261612090_Six.Designer.cs">
+      <DependentUpon>201809261612090_Six.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Cart.cs" />
     <Compile Include="Models\EntityModels\CartToDeliver.cs" />
@@ -246,6 +250,7 @@
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\ProductDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\StockViewModel.cs" />
+    <Compile Include="Models\ViewModels\UserCartListShowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -328,12 +333,12 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Stock\Add.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Cart\UserCartList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\Product\" />
     <Folder Include="Image\User\" />
-    <Folder Include="Views\Cart\" />
     <Folder Include="Views\CheckOut\" />
     <Folder Include="Views\Order\" />
   </ItemGroup>
@@ -365,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809232211204_Five.resx">
       <DependentUpon>201809232211204_Five.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809261612090_Six.resx">
+      <DependentUpon>201809261612090_Six.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

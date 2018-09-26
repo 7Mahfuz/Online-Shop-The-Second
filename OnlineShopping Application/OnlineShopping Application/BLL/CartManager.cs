@@ -28,6 +28,7 @@ namespace OnlineShopping_Application.BLL
             aCart.ProductId = aProductDetailViewModel.Id;aCart.Quantity = aProductDetailViewModel.Qunatity;aCart.UserId = UserId;
             aCart.IsActive = true;
             bool flag = aUnitOfWork.Repository<Cart>().InsertModel(aCart);
+            aUnitOfWork.Save();
             if(flag)
             {
                 return "Added";
@@ -51,10 +52,28 @@ namespace OnlineShopping_Application.BLL
             else return "Failed";
 
         }
-        public IEnumerable<Cart> GetUserCartList(string userId)
+        public IEnumerable<UserCartListShowViewModel> GetUserCartList(string userId)
         {
-            IEnumerable<Cart> carts = aUnitOfWork.Repository<Cart>().GetList(x => x.UserId == userId);
-            return carts;
+            IEnumerable<Cart> carts = aUnitOfWork.Repository<Cart>().GetList(x => x.UserId == userId && x.IsActive==true).ToList();
+            List<UserCartListShowViewModel>userCart=new List<UserCartListShowViewModel>();
+
+            foreach (Cart cart in carts)
+            {
+                UserCartListShowViewModel newCart=new UserCartListShowViewModel();
+                newCart.CartId = cart.Id;
+                newCart.ProductId = cart.ProductId;
+                newCart.UserId = userId;
+                newCart.Quantity = cart.Quantity;
+                Product aProduct = aUnitOfWork.Repository<Product>().GetModelById(cart.ProductId);
+                newCart.ProductName = aProduct.Name;
+                newCart.ImageUrl = aProduct.ImageUrl;
+                newCart.Cost = "" + cart.Quantity + " X " + aProduct.Price + " = " +
+                               (cart.Quantity*aProduct.Price);
+
+                userCart.Add(newCart);
+            }
+
+            return userCart;
         }
     }
 }

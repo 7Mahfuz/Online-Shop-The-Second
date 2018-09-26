@@ -68,8 +68,8 @@ namespace OnlineShopping_Application.Models
         [Display(Name = "User Name")]
         public string UserName { get; set; }
 
-        [Required]
-        [Display(Name = "UserRoles")]
+        
+       
         public string UserRoles { get; set; }
 
 
