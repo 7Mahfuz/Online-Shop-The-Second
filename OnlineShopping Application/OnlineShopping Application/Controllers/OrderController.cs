@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using OnlineShopping_Application.BLL;
 using OnlineShopping_Application.Models;
 
@@ -10,18 +12,38 @@ namespace OnlineShopping_Application.Controllers
 {
     public class OrderController : Controller
     {
+        CustomUserManager aCustomUserManager=new CustomUserManager();
+        OrderManager aOrderManager=new OrderManager();
+        CartToDeliverManager aCartToDeliverManager=new CartToDeliverManager();
+        PaymentManager aPaymentManager=new PaymentManager();
         // GET: Order
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<OrderListViewModel> list = aOrderManager.GetUnDoneOrders();
+            foreach (OrderListViewModel orderList in list)
+            {
+                ApplicationUser user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(User.Identity.GetUserId());
+                User aUser = aCustomUserManager.GetUser(user.UserName);
+                orderList.UserName = aUser.UserName;
+            }
+
+            return View(list);
         }
 
         // GET: Order/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int paymentId)
         {
+            IEnumerable<CartToDeliver> carts = aCartToDeliverManager.GetCartListForAdmin(paymentId);
+            Order aOrder = aOrderManager.GetaOrder(paymentId);
+            Payment aPayment = aPaymentManager.GetAPayment(paymentId);
             return View();
         }
 
+
+        public ActionResult OrderDone(int paymentId)
+        {
+            return View();
+        }
         // GET: Order/Create
         public ActionResult Create()
         {

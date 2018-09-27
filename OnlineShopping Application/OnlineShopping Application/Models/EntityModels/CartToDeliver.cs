@@ -11,6 +11,8 @@ namespace OnlineShopping_Application.Models
         public int Id { get; set; }
         public int ProductId { get; set; }
         public double Quantity { get; set; }
+        public int PaymentId { get; set; }
+
         public string UserId { get; set; }
        
         

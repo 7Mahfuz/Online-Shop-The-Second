@@ -20,37 +20,36 @@ namespace OnlineShopping_Application.BLL
             this.aUnitOfWork = _uow;
         }
 
-        public int Save(Payment aPayment,string UserId)
+        public int Save(PaymentPageViewModel aPageViewModel,string UserId)
         {
-            aPayment.IsActive = true;aPayment.UserId = UserId;
-            bool flag = aUnitOfWork.Repository<Payment>().InsertModel(aPayment);
+            Payment aPayment=new Payment();
+            aPayment.UserId = UserId;
+            aPayment.BkashNumber = aPageViewModel.Bkash;
+            aPayment.CreditCardNumber = aPageViewModel.CreditCardNumber;
+            aPayment.IsActive = true;
+            aPayment.TrxNo = aPageViewModel.TrxNo;
+            aUnitOfWork.Repository<Payment>().InsertModel(aPayment);
+            aUnitOfWork.Save();
 
-            if(flag)
+            IEnumerable<Payment> payments = aUnitOfWork.Repository<Payment>().GetList();
+            int paymentId = 0;
+            foreach (Payment pay in payments.Reverse())
             {
-                Payment aPayment2 = GetAPayment(UserId);
-                return aPayment2.Id;
+                paymentId = pay.Id;break;
+                ;
             }
-            else
-            {
-                return 0;
-            }
-
+            return paymentId;
         }
-        public void IsExist()
-        {
-
-        }
-        public void Delete()
-        {
-
-        }
-        public void Update()
-        {
-
-        }
+       
         public Payment GetAPayment(string UserId)
         {
             Payment payment = aUnitOfWork.Repository<Payment>().GetModel(x => x.UserId == UserId && x.IsActive == true);
+            return payment;
+        }
+
+        public Payment GetAPayment(int paymentId)
+        {
+            Payment payment = aUnitOfWork.Repository<Payment>().GetModel(x => x.Id ==paymentId  && x.IsActive == true);
             return payment;
         }
     }

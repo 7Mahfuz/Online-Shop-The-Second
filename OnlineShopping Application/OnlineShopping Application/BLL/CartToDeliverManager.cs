@@ -21,9 +21,9 @@ namespace OnlineShopping_Application.BLL
             this.aUnitOfWork = _uow;
         }
 
-        public void TransferCart(string UserId)
+        public void TransferCart(string UserId,int paymentId)
         {
-            IEnumerable<Cart> carts = aUnitOfWork.Repository<Cart>().GetList(x => x.UserId == UserId);
+            IEnumerable<Cart> carts = aUnitOfWork.Repository<Cart>().GetList(x => x.UserId == UserId && x.IsActive==true);
             foreach(Cart aCart in carts)
             {
                 CartToDeliver aCartToDeliver = new CartToDeliver();
@@ -35,10 +35,29 @@ namespace OnlineShopping_Application.BLL
                 aCartToDeliver.ProductId = aCart.ProductId;
                 aCartToDeliver.Quantity = aCart.Quantity;
                 aCartToDeliver.UserId = UserId;
+                aCartToDeliver.PaymentId = paymentId;
 
                 bool flag1 = aUnitOfWork.Repository<CartToDeliver>().InsertModel(aCartToDeliver);
                 bool flag2 = aUnitOfWork.Repository<Cart>().UpdateModel(oneCart);
             }
+            aUnitOfWork.Save();
+        }
+
+
+        public IEnumerable<CartToDeliver> GetCartList(string userId, int paymentId)
+        {
+            IEnumerable<CartToDeliver> carts =
+                aUnitOfWork.Repository<CartToDeliver>().GetList(x => x.UserId == userId && x.PaymentId == paymentId);
+
+            return carts;
+        }
+
+        public IEnumerable<CartToDeliver> GetCartListForAdmin( int paymentId)
+        {
+            IEnumerable<CartToDeliver> carts =
+                aUnitOfWork.Repository<CartToDeliver>().GetList(x =>x.PaymentId == paymentId);
+
+            return carts;
         }
     }
 }

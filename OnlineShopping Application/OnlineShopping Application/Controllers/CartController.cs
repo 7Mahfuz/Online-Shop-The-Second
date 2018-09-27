@@ -24,6 +24,11 @@ namespace OnlineShopping_Application.Controllers
            IEnumerable<UserCartListShowViewModel>carts=  aCartManager.GetUserCartList(currentUserId);
             return View(carts);
         }
+
+        public ActionResult GoToPayment()
+        {
+            return RedirectToAction("Index", "CheckOut");
+        }
         // GET: Cart/Details/5
         public ActionResult Details(int id)
         {

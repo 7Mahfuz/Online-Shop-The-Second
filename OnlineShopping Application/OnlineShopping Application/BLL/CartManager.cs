@@ -39,6 +39,7 @@ namespace OnlineShopping_Application.BLL
         
         public string Delete(Cart aCart)
         {
+            aCart.IsActive = true;
             bool flag = aUnitOfWork.Repository<Cart>().DeleteModel(aCart);
             aUnitOfWork.Save();
             if (flag) return "Deleted";
