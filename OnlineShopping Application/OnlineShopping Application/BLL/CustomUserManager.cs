@@ -21,10 +21,21 @@ namespace OnlineShopping_Application.BLL
             this.aUnitOfWork = _uow;
         }
 
-        public ApplicationUser GetUser(string UserId)
+        public void SaveUser(User aUser)
         {
-            ApplicationUser user = aUnitOfWork.Repository<ApplicationUser>().GetModel(x => x.Id == UserId);
-            return user;
+            aUnitOfWork.Repository<User>().InsertModel(aUser);
+            aUnitOfWork.Save();
+        }
+        public User GetUser(string UserName)
+        {
+            User aUser = aUnitOfWork.Repository<User>().GetModel(x => x.UserName == UserName);
+            return aUser;
+        }
+
+        public void UpdateUser(User aUser)
+        {
+            aUnitOfWork.Repository<User>().UpdateModel(aUser);
+            aUnitOfWork.Save();
         }
     }
 }

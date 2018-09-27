@@ -11,6 +11,7 @@ namespace OnlineShopping_Application.Models
         public int Id { get; set; }
         public string CreditCardNumber { get; set; }
         public string BkashNumber { get; set; }
+        public string TrxNo { get; set; }
         public bool IsActive { get; set; }
 
         public string UserId { get; set; }

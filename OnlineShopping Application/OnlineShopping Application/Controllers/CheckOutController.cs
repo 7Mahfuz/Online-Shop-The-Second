@@ -25,8 +25,8 @@ namespace OnlineShopping_Application.Controllers
         public ActionResult OrderCheckOut()
         {
             string currentUserId = User.Identity.GetUserId();
-            ApplicationUser currentUser = aCustomUserManager.GetUser(currentUserId);
-            string address = currentUser.Address;
+           // ApplicationUser currentUser = aCustomUserManager.GetUser(currentUserId);
+           // string address = currentUser.Address;
             return View();
         }
         [HttpPost]

@@ -8,11 +8,12 @@
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <div class="dropdown">
-                    <button class="dropbtn">Dropdown</button>
+                    <button class="dropbtn">"Hello " @User.Identity.GetUserName() </button>
                     <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
+                        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                        @Html.ActionLink("See Detail", "ShowUserDetail", "User")
+                         @Html.ActionLink("Update Password","UpdatePassword","User")
+                        @Html.ActionLink("Update Detail", "EditUserDetail", "User")
                     </div>
                 </div>
             </li>

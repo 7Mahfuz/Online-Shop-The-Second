@@ -207,6 +207,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DLL\Repository.cs" />
     <Compile Include="DLL\UnitOfWork.cs" />
     <Compile Include="DLL\_IRepository.cs" />
@@ -237,6 +238,18 @@
     <Compile Include="Migrations\201809261612090_Six.Designer.cs">
       <DependentUpon>201809261612090_Six.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809271013154_Seven.cs" />
+    <Compile Include="Migrations\201809271013154_Seven.Designer.cs">
+      <DependentUpon>201809271013154_Seven.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809271021590_Eight.cs" />
+    <Compile Include="Migrations\201809271021590_Eight.Designer.cs">
+      <DependentUpon>201809271021590_Eight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809271814427_Nine.cs" />
+    <Compile Include="Migrations\201809271814427_Nine.Designer.cs">
+      <DependentUpon>201809271814427_Nine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Cart.cs" />
     <Compile Include="Models\EntityModels\CartToDeliver.cs" />
@@ -245,9 +258,11 @@
     <Compile Include="Models\EntityModels\Payment.cs" />
     <Compile Include="Models\EntityModels\Product.cs" />
     <Compile Include="Models\EntityModels\Stock.cs" />
+    <Compile Include="Models\EntityModels\User.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\PaymentPageViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\StockViewModel.cs" />
     <Compile Include="Models\ViewModels\UserCartListShowViewModel.cs" />
@@ -334,6 +349,8 @@
     <Content Include="Views\Stock\Add.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Cart\UserCartList.cshtml" />
+    <Content Include="Views\User\EditUserDetail.cshtml" />
+    <Content Include="Views\User\ShowUserDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -373,6 +390,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809261612090_Six.resx">
       <DependentUpon>201809261612090_Six.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809271013154_Seven.resx">
+      <DependentUpon>201809271013154_Seven.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809271021590_Eight.resx">
+      <DependentUpon>201809271021590_Eight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809271814427_Nine.resx">
+      <DependentUpon>201809271814427_Nine.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
