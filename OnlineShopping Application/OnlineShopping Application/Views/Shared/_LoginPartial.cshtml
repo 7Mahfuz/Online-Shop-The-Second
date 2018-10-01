@@ -13,10 +13,9 @@
                         if (User.IsInRole("User"))
                         {
                             <div class="dropdown-content">
-                                @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+                               
                                 @Html.ActionLink("My Detail", "ShowUserDetail", "User")
-                                @*@Html.ActionLink("Update Password","UpdatePassword","User")*@
-                                @Html.ActionLink("Update Detail", "EditUserDetail", "User")
+                               @Html.ActionLink("Update Detail", "EditUserDetail", "User")
                                 @Html.ActionLink("My Cart", "UserCartList", "Cart")
                             </div>
 
@@ -24,24 +23,25 @@
                         else if (User.IsInRole("Admin"))
                         {
                             <div class="dropdown-content">
-                                @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
-                                @Html.ActionLink("My Detail", "ShowUserDetail", "User")
-                                @*@Html.ActionLink("Update Password","UpdatePassword","User")*@
-                                @Html.ActionLink("Update Detail", "EditUserDetail", "User")
-                                @Html.ActionLink("Current Orders", "Index", "Order")
-                            </div>
+                    @Html.ActionLink("Category", "Index", "Category")
+                    @Html.ActionLink("Product", "Index", "Product")
+                    @Html.ActionLink("Stock Update", "Add", "Stock")
+                    @Html.ActionLink("My Detail", "ShowUserDetail", "User")
+                  @Html.ActionLink("Update Detail", "EditUserDetail", "User")
+                    @Html.ActionLink("Current Orders", "Index", "Order")
+                    </div>
 
                         }
                     }
-                    
-                </div>
-            </li>
-           <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        </ul>
-    }
-}
-else
-{
+
+                    </div>
+                    </li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                </ul>
+                            }
+                        }
+                        else
+                        {
     <ul class="nav navbar-nav navbar-right">
         <li><div class="dropdown">
     <button class="dropbtn">Category</button>
