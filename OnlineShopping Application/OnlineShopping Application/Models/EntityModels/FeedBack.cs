@@ -6,17 +6,13 @@ using System.Web;
 
 namespace OnlineShopping_Application.Models
 {
-    public class Order
-    {
-        [Key]
+    public class FeedBack
+    {[Key]
         public int Id { get; set; }
         public string UserId { get; set; }
-        public int CartToDeliverId { get; set; }
-        public int PaymentId { get; set; }
-
-        public bool IsDone { get; set; }
-        public bool IsActive { get; set; }
-        public string DeliveryAddress { get; set; }
+        public string Subject { get; set; }
+        public string Detail { get; set; }
         public DateTime Date { get; set; }
+
     }
 }

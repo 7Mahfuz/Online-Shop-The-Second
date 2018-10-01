@@ -37,6 +37,7 @@ namespace OnlineShopping_Application.Models
         public DbSet<Product> Product { get; set; }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<FeedBack> FeedBacks { get; set; }
 
         public static ApplicationDbContext Create()
         {

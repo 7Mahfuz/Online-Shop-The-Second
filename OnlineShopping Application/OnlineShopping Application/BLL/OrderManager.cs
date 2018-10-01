@@ -40,6 +40,7 @@ namespace OnlineShopping_Application.BLL
                 aOrder.DeliveryAddress = address;
                 aOrder.IsActive = true;
                 aOrder.IsDone = false;
+                aOrder.Date=DateTime.Today;
 
                 bool flag = aUnitOfWork.Repository<Order>().InsertModel(aOrder);
             }
@@ -61,12 +62,33 @@ namespace OnlineShopping_Application.BLL
                 aOrder.OrderId = order.Id;
                 aOrder.UserId = order.UserId;
                 aOrder.PaymentId = order.PaymentId;
+                aOrder.Date = order.Date;
                 newOrder.Add(aOrder);
             }
 
             return newOrder;
         }
+        public IEnumerable<OrderListViewModel> GetDoneOrders()
+        {
+            IEnumerable<Order> orders =
+                aUnitOfWork.Repository<Order>().GetList(x => x.IsDone == true && x.IsActive == false);
+            List<Order> tempOrder = orders.DistinctBy(x => x.PaymentId).ToList();
+            List<OrderListViewModel> newOrder = new List<OrderListViewModel>();
+            int sl = 0;
+            foreach (Order order in tempOrder)
+            {
+                OrderListViewModel aOrder = new OrderListViewModel();
+                aOrder.SL = ++sl;
+                aOrder.Address = order.DeliveryAddress;
+                aOrder.OrderId = order.Id;
+                aOrder.UserId = order.UserId;
+                aOrder.PaymentId = order.PaymentId;
+                aOrder.Date = order.Date;
+                newOrder.Add(aOrder);
+            }
 
+            return newOrder;
+        }
         public Order GetaOrder(int paymentId)
         {
             Order aOrder = aUnitOfWork.Repository<Order>().GetModel(x => x.PaymentId == paymentId && x.IsDone == false);

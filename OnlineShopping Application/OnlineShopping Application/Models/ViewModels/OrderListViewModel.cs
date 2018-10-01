@@ -14,5 +14,6 @@ namespace OnlineShopping_Application.Models
         public string UserName { get; set; }
         public int PaymentId { get; set; }
         public string Address { get; set; }
+        public DateTime Date { get; set; }
     }
 }

@@ -13,7 +13,8 @@ namespace OnlineShopping_Application.Models
         public string BkashNumber { get; set; }
         public string TrxNo { get; set; }
         public bool IsActive { get; set; }
-
+        public bool CashOnDelivery { get; set; }
         public string UserId { get; set; }
+        public DateTime Date { get; set; }
     }
 }

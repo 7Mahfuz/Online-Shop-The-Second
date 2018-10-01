@@ -194,6 +194,7 @@
     <Compile Include="BLL\CartToDeliverManager.cs" />
     <Compile Include="BLL\CategoryManager.cs" />
     <Compile Include="BLL\CustomUserManager.cs" />
+    <Compile Include="BLL\FeedBackManager.cs" />
     <Compile Include="BLL\OrderManager.cs" />
     <Compile Include="BLL\PaymentManager.cs" />
     <Compile Include="BLL\ProductManager.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CheckOutController.cs" />
+    <Compile Include="Controllers\FeedBackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -254,10 +256,23 @@
     <Compile Include="Migrations\201809271835154_Ten.Designer.cs">
       <DependentUpon>201809271835154_Ten.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809301555010_Eleven.cs" />
+    <Compile Include="Migrations\201809301555010_Eleven.Designer.cs">
+      <DependentUpon>201809301555010_Eleven.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810010057201_Twelve.cs" />
+    <Compile Include="Migrations\201810010057201_Twelve.Designer.cs">
+      <DependentUpon>201810010057201_Twelve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810010109487_Thirteen.cs" />
+    <Compile Include="Migrations\201810010109487_Thirteen.Designer.cs">
+      <DependentUpon>201810010109487_Thirteen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Cart.cs" />
     <Compile Include="Models\EntityModels\CartToDeliver.cs" />
     <Compile Include="Models\EntityModels\Category.cs" />
+    <Compile Include="Models\EntityModels\FeedBack.cs" />
     <Compile Include="Models\EntityModels\Order.cs" />
     <Compile Include="Models\EntityModels\Payment.cs" />
     <Compile Include="Models\EntityModels\Product.cs" />
@@ -266,6 +281,7 @@
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\OrderDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\OrderListViewModel.cs" />
     <Compile Include="Models\ViewModels\PaymentPageViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductDetailViewModel.cs" />
@@ -357,12 +373,15 @@
     <Content Include="Views\User\EditUserDetail.cshtml" />
     <Content Include="Views\User\ShowUserDetail.cshtml" />
     <Content Include="Views\CheckOut\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\IndexDone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\Product\" />
     <Folder Include="Image\User\" />
-    <Folder Include="Views\Order\" />
+    <Folder Include="Views\FeedBack\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -407,6 +426,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809271835154_Ten.resx">
       <DependentUpon>201809271835154_Ten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809301555010_Eleven.resx">
+      <DependentUpon>201809301555010_Eleven.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810010057201_Twelve.resx">
+      <DependentUpon>201810010057201_Twelve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810010109487_Thirteen.resx">
+      <DependentUpon>201810010109487_Thirteen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

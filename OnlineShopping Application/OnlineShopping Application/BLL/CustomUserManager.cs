@@ -31,7 +31,7 @@ namespace OnlineShopping_Application.BLL
             User aUser = aUnitOfWork.Repository<User>().GetModel(x => x.UserName == UserName);
             return aUser;
         }
-
+       
         public void UpdateUser(User aUser)
         {
             aUnitOfWork.Repository<User>().UpdateModel(aUser);

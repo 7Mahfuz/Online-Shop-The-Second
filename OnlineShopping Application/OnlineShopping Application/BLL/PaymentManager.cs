@@ -28,6 +28,8 @@ namespace OnlineShopping_Application.BLL
             aPayment.CreditCardNumber = aPageViewModel.CreditCardNumber;
             aPayment.IsActive = true;
             aPayment.TrxNo = aPageViewModel.TrxNo;
+            aPayment.Date=DateTime.Today;
+            aPayment.CashOnDelivery = aPageViewModel.CashOnDelivery;
             aUnitOfWork.Repository<Payment>().InsertModel(aPayment);
             aUnitOfWork.Save();
 

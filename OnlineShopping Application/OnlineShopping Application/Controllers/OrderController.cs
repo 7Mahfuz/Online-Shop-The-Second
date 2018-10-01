@@ -22,70 +22,66 @@ namespace OnlineShopping_Application.Controllers
             IEnumerable<OrderListViewModel> list = aOrderManager.GetUnDoneOrders();
             foreach (OrderListViewModel orderList in list)
             {
-                ApplicationUser user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(User.Identity.GetUserId());
-                User aUser = aCustomUserManager.GetUser(user.UserName);
-                orderList.UserName = aUser.UserName;
+                ApplicationUser user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(orderList.UserId);
+                
+                    orderList.UserName = user.UserName;
             }
 
             return View(list);
         }
 
         // GET: Order/Details/5
-        public ActionResult Details(int paymentId)
+        public ActionResult Details(int paymentId ,string what)
         {
+           
             IEnumerable<CartToDeliver> carts = aCartToDeliverManager.GetCartListForAdmin(paymentId);
+           OrderDetailViewModel aOrderDetailViewModel =new OrderDetailViewModel();
             Order aOrder = aOrderManager.GetaOrder(paymentId);
             Payment aPayment = aPaymentManager.GetAPayment(paymentId);
-            return View();
-        }
+            ApplicationUser user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(aPayment.UserId);
+            User aUser = aCustomUserManager.GetUser(user.UserName);
 
-
-        public ActionResult OrderDone(int paymentId)
-        {
-            return View();
-        }
-        // GET: Order/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Order/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            aOrderDetailViewModel.CustomerName = user.UserName;
+            aOrderDetailViewModel.CustomerAddress = aUser.Address;
+            aOrderDetailViewModel.CustomerPhn = aUser.Number;
+            aOrderDetailViewModel.OrderId = aOrder.Id;
+            aOrderDetailViewModel.OrderDate = aOrder.Date;
+            aOrderDetailViewModel.PaymentDate = aPayment.Date;
+            aOrderDetailViewModel.PaymentId = aPayment.Id;
+            if (aPayment.CashOnDelivery == true)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                aOrderDetailViewModel.PaymentType = "Cash on delivery";
             }
-            catch
+            else if (aPayment.CreditCardNumber != null)
             {
-                return View();
+                aOrderDetailViewModel.PaymentType = "By Credit Card = " + aPayment.CreditCardNumber;
             }
+            else
+            {
+                aOrderDetailViewModel.PaymentType = "By Bkash number = " + aPayment.BkashNumber + " and TrxNo is = " +
+                                                    aPayment.TrxNo;
+            }
+                return View(aOrderDetailViewModel);
         }
 
-        // GET: Order/Edit/5
-        public ActionResult Edit(int id)
+
+        public string OrderDone(int paymentId)
         {
-            return View();
+            aOrderManager.OrderDone(paymentId);
+            return "OK";
         }
 
-        // POST: Order/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult IndexDone()
         {
-            try
+            IEnumerable<OrderListViewModel> list = aOrderManager.GetDoneOrders();
+            foreach (OrderListViewModel orderList in list)
             {
-                // TODO: Add update logic here
+                ApplicationUser user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(orderList.UserId);
 
-                return RedirectToAction("Index");
+                orderList.UserName = user.UserName;
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(list);
         }
 
         // GET: Order/Delete/5

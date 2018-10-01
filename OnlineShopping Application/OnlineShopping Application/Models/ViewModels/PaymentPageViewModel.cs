@@ -11,7 +11,7 @@ namespace OnlineShopping_Application.Models
         public string Bkash { get; set; }
         public string TrxNo { get; set; }
         public string Address { get; set; }
-
+        public bool CashOnDelivery { get; set; }
 
     }
 }
