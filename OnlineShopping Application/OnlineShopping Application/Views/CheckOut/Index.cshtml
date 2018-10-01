@@ -3,68 +3,72 @@
 @{
     ViewBag.Title = "Index";
 }
+<br/><br/>
 <div class="container body-content">
-    <h2>Index</h2>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
+                <div class="form-horizontal">
+                    <br/>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CashOnDelivery, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.RadioButtonFor(model => model.CashOnDelivery, true) Yes
+                            @Html.RadioButtonFor(model => model.CashOnDelivery, false) No
+                            <font color="red">[If you want Cash on Delivery just select.Don't input Credit Card info or Bkash info]</font>
+                            @Html.ValidationMessageFor(model => model.CreditCardNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div id="fuu">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CreditCardNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.CreditCardNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CreditCardNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Bkash, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Bkash, new { htmlAttributes = new { @class = "form-control" } }) <font color="blue">[Please Send money To this number : 01XXXXXXX]</font>
+                                    @Html.ValidationMessageFor(model => model.Bkash, "", new { @class = "text-danger" })
+</div>
+                        </div>
 
-        <div class="form-horizontal">
-            <h4>PaymentPageViewModel</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.CashOnDelivery, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.RadioButtonFor(model => model.CashOnDelivery, true) Cash on Delivery
-                    @Html.ValidationMessageFor(model => model.CreditCardNumber, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div id="fuu">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CreditCardNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.CreditCardNumber, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CreditCardNumber, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TrxNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TrxNo, new { htmlAttributes = new { @class = "form-control" } }) <font color="blue">[Enter Bkash TrxNo after send money To our Number]</font>
+                                    @Html.ValidationMessageFor(model => model.TrxNo, "", new { @class = "text-danger" })
+</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Proceed" class="btn btn-default btn-warning" />
+                        </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Bkash, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Bkash, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Bkash, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TrxNo, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.TrxNo, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.TrxNo, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
+            }
         </div>
-    }
-
     </div>
+</div>
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     }

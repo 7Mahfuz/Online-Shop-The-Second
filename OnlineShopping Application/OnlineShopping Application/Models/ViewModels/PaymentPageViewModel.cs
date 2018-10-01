@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,6 +11,7 @@ namespace OnlineShopping_Application.Models
         public string CreditCardNumber { get; set; }
         public string Bkash { get; set; }
         public string TrxNo { get; set; }
+        [Required]
         public string Address { get; set; }
         public bool CashOnDelivery { get; set; }
 

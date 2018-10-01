@@ -4,9 +4,10 @@
     ViewBag.Title = "UserCartList";
 }
 <div class="container body-content">
-    <br/>
-    @Html.ActionLink("Procced To CheckOut", "GoToPayment")
-    <table class="table">
+    <br/><br />
+    @Html.ActionLink("Procced To CheckOut", "GoToPayment", null, new {@class= "btn btn-default btn-success" })
+    <br /><br />
+    <table class="table table-bordered table-striped">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ProductName)
@@ -20,7 +21,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Cost)
             </th>
-            <th></th>
+            <th>Action</th>
         </tr>
 
         @foreach (var item in Model)

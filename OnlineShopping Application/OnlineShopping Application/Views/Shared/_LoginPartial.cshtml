@@ -1,4 +1,11 @@
 ﻿@using Microsoft.AspNet.Identity
+@using OnlineShopping_Application.BLL
+@using OnlineShopping_Application.Models
+@{
+    CategoryManager aCategoryManager=new CategoryManager();
+    IEnumerable<Category> categories = aCategoryManager.GetList();
+
+}
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -8,14 +15,28 @@
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <div class="dropdown">
+                    <button class="dropbtn">Category</button>
+                    <div class="dropdown-content">
+                        @{
+                            foreach (Category category in categories)
+                            {
+                                @Html.ActionLink(category.Name, "ProductDetailCustomer", "Product", new { @categoryId = category.Id }, null)
+
+                            }
+                        }
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
                     <button class="dropbtn">"Hello " @User.Identity.GetUserName() </button>
                     @{
                         if (User.IsInRole("User"))
                         {
                             <div class="dropdown-content">
-                               
+
                                 @Html.ActionLink("My Detail", "ShowUserDetail", "User")
-                               @Html.ActionLink("Update Detail", "EditUserDetail", "User")
+                                @Html.ActionLink("Update Detail", "EditUserDetail", "User")
                                 @Html.ActionLink("My Cart", "UserCartList", "Cart")
                             </div>
 
@@ -23,21 +44,21 @@
                         else if (User.IsInRole("Admin"))
                         {
                             <div class="dropdown-content">
-                    @Html.ActionLink("Category", "Index", "Category")
-                    @Html.ActionLink("Product", "Index", "Product")
-                    @Html.ActionLink("Stock Update", "Add", "Stock")
-                    @Html.ActionLink("My Detail", "ShowUserDetail", "User")
-                  @Html.ActionLink("Update Detail", "EditUserDetail", "User")
-                    @Html.ActionLink("Current Orders", "Index", "Order")
-                    </div>
+                                @Html.ActionLink("Category", "Index", "Category")
+                                @Html.ActionLink("Product", "Index", "Product")
+                                @Html.ActionLink("Stock Update", "Add", "Stock")
+                                @Html.ActionLink("My Detail", "ShowUserDetail", "User")
+                                @Html.ActionLink("Update Detail", "EditUserDetail", "User")
+                                @Html.ActionLink("Current Orders", "Index", "Order")
+                            </div>
 
                         }
                     }
 
-                    </div>
-                    </li>
-                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                </ul>
+                </div>
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
                             }
                         }
                         else
@@ -45,11 +66,15 @@
     <ul class="nav navbar-nav navbar-right">
         <li><div class="dropdown">
     <button class="dropbtn">Category</button>
-    <div class="dropdown-content">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-    </div>
+            <div class="dropdown-content">
+                @{
+                    foreach (Category category in categories)
+                    {
+                      @Html.ActionLink(category.Name,"ProductDetailCustomer","Product",new {@categoryId=category.Id},null)
+                        
+                    }
+                }
+              </div>
 </div></li>
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new {id = "registerLink"})</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new {id = "loginLink"})</li>

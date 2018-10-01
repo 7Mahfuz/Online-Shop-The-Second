@@ -3,81 +3,84 @@
 @{
     ViewBag.Title = "Details";
 }
+<br/><br/>
 <div class="container body-content">
-    <h2>Details</h2>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-8">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CustomerName)
+                </dt>
 
-    <div>
-        <h4>OrderDetailViewModel</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.CustomerName)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CustomerName)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.CustomerName)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CustomerAddress)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.CustomerAddress)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CustomerAddress)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.CustomerAddress)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CustomerPhn)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.CustomerPhn)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CustomerPhn)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.CustomerPhn)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PaymentId)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.PaymentId)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PaymentId)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.PaymentId)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PaymentType)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.PaymentType)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PaymentType)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.PaymentType)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PaymentDate)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.PaymentDate)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PaymentDate)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.PaymentDate)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.OrderId)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OrderId)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.OrderId)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.OrderDate)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OrderDate)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.OrderDate)
-            </dd>
-
-        </dl>
+            </dl>
+            <br/><br/>
+            @Html.ActionLink("This Order is Done", "OrderDone", new { paymentId = Model.PaymentId })<br /><br />
+            @Html.ActionLink("Back to List", "Index")
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("This Order is Done", "OrderDone", new { paymentId = Model.PaymentId })
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-   </div>
+        <p>
+           
+        </p>
+    
+</div>

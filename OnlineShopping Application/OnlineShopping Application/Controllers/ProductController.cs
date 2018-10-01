@@ -116,7 +116,7 @@ namespace OnlineShopping_Application.Controllers
             aProductDetailViewModel.Description = aProduct.Description;
             aProductDetailViewModel.ImageUrl = aProduct.ImageUrl;
             aProductDetailViewModel.Price = aProduct.Price;
-            aProductDetailViewModel.Qunatity = 0;
+            aProductDetailViewModel.Qunatity = 1;
 
             return View(aProductDetailViewModel);
         }
@@ -126,7 +126,13 @@ namespace OnlineShopping_Application.Controllers
             string currentUserId = User.Identity.GetUserId();
             aCartManager.SaveToCart(aProductDetailViewModel, currentUserId);
 
-            return View(aProductDetailViewModel);
+            return RedirectToAction("UserCartList", "Cart");
+        }
+
+        public ActionResult ProductDetailCustomer(int categoryId)
+        {
+            IEnumerable<Product> products = aProductManager.GetProductListCategoryId(categoryId);
+            return View(products);
         }
     }
 }
