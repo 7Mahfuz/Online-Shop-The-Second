@@ -9,6 +9,7 @@ namespace OnlineShopping_Application.Models
     public class CartToDeliver
     {        [Key]
         public int Id { get; set; }
+        [Display(Name = "Product")]
         public int ProductId { get; set; }
         public double Quantity { get; set; }
         public int PaymentId { get; set; }

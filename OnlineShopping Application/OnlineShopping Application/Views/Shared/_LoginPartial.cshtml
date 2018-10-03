@@ -1,6 +1,8 @@
 ﻿@using Microsoft.AspNet.Identity
 @using OnlineShopping_Application.BLL
 @using OnlineShopping_Application.Models
+
+
 @{
     CategoryManager aCategoryManager=new CategoryManager();
     IEnumerable<Category> categories = aCategoryManager.GetList();
@@ -15,7 +17,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <div class="dropdown">
-                    <button class="dropbtn">Category</button>
+                    <div class="dropbtn">Category</div>
                     <div class="dropdown-content">
                         @{
                             foreach (Category category in categories)
@@ -29,7 +31,7 @@
             </li>
             <li>
                 <div class="dropdown">
-                    <button class="dropbtn">"Hello " @User.Identity.GetUserName() </button>
+                    <div class="dropbtn">"Hello " @User.Identity.GetUserName() </div>
                     @{
                         if (User.IsInRole("User"))
                         {
@@ -67,7 +69,7 @@
                         {
     <ul class="nav navbar-nav navbar-right">
         <li><div class="dropdown">
-    <button class="dropbtn">Category</button>
+    <div class="dropbtn">Category</div>
             <div class="dropdown-content">
                 @{
                     foreach (Category category in categories)

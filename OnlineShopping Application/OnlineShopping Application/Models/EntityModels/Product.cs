@@ -15,11 +15,14 @@ namespace OnlineShopping_Application.Models
         public double Price { get; set; }
         public string Description { get; set; }
         [Required(ErrorMessage = "There must be an image")]
+        [Display(Name = "Image")]
         public string ImageUrl { get; set; }
         [NotMapped]
         public  HttpPostedFileBase ImageFile { get; set; }
+        [Display(Name = "Select Category")]
         public int CategoryId { get; set; }
        [NotMapped]
+        [Display(Name = "Select Category")]
         public string categoryName { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace OnlineShopping_Application.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Select Product")]
         public int ProductId { get; set; }
         public double Quantity { get; set; }
         public string UserId { get; set; }
