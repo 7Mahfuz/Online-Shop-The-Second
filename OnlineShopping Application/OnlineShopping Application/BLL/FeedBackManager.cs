@@ -27,5 +27,17 @@ namespace OnlineShopping_Application.BLL
             aUnitOfWork.Repository<FeedBack>().InsertModel(aFeedBack);
             aUnitOfWork.Save();
         }
+
+        public IEnumerable<FeedBack> GetAllFeedBacks()
+        {
+            IEnumerable<FeedBack> feedBacks = aUnitOfWork.Repository<FeedBack>().GetList();
+            return feedBacks;
+        }
+
+        public FeedBack GetAFeedBack(int feedBackId)
+        {
+            FeedBack aFeedBack = aUnitOfWork.Repository<FeedBack>().GetModelById(feedBackId);
+            return aFeedBack;
+        }
     }
 }

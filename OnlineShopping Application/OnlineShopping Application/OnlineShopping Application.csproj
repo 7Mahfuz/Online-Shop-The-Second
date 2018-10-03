@@ -308,7 +308,51 @@
     <Content Include="Image\Default\08.jpg" />
     <Content Include="Image\Default\09.jpg" />
     <Content Include="Image\Default\10.jpg" />
+    <Content Include="Image\Default\Bam01.jpg" />
+    <Content Include="Image\Default\Bam02.jpg" />
+    <Content Include="Image\Default\Bam03.jpg" />
+    <Content Include="Image\Default\Bam04.jpg" />
+    <Content Include="Image\Default\Bam05.jpg" />
+    <Content Include="Image\Default\Bam06.jpg" />
+    <Content Include="Image\Default\Bam07.jpg" />
+    <Content Include="Image\Default\Bam08.png" />
+    <Content Include="Image\Default\Bam09.jpg" />
+    <Content Include="Image\Default\Bam10.jpg" />
+    <Content Include="Image\Default\Bam11.jpg" />
+    <Content Include="Image\Default\Em01.jpg" />
+    <Content Include="Image\Default\Em02.jpg" />
+    <Content Include="Image\Default\Em03.jpg" />
+    <Content Include="Image\Default\Em04.png" />
+    <Content Include="Image\Default\Em05.jpg" />
+    <Content Include="Image\Default\Em06.jpg" />
+    <Content Include="Image\Default\Em07.jpg" />
+    <Content Include="Image\Default\Em08.jpg" />
+    <Content Include="Image\Default\Em09.jpg" />
+    <Content Include="Image\Default\Em10.jpg" />
+    <Content Include="Image\Default\Em11.jpg" />
+    <Content Include="Image\Default\Jwl01.jpg" />
+    <Content Include="Image\Default\Jwl02.jpg" />
+    <Content Include="Image\Default\Jwl03.jpg" />
+    <Content Include="Image\Default\Jwl04.jpg" />
+    <Content Include="Image\Default\Jwl05.jpg" />
+    <Content Include="Image\Default\Jwl06.jpg" />
+    <Content Include="Image\Default\Jwl07.jpg" />
+    <Content Include="Image\Default\Jwl08.jpg" />
+    <Content Include="Image\Default\Jwl09.jpg" />
+    <Content Include="Image\Default\Jwl10.jpg" />
+    <Content Include="Image\Default\Jwl11.png" />
     <Content Include="Image\Default\NoImage.jpg" />
+    <Content Include="Image\Default\Ter01.jpg" />
+    <Content Include="Image\Default\Ter02.jpg" />
+    <Content Include="Image\Default\Ter03.jpg" />
+    <Content Include="Image\Default\Ter04.jpg" />
+    <Content Include="Image\Default\Ter05.jpg" />
+    <Content Include="Image\Default\Ter06.jpg" />
+    <Content Include="Image\Default\Ter07.jpg" />
+    <Content Include="Image\Default\Ter08.jpeg" />
+    <Content Include="Image\Default\Ter09.jpg" />
+    <Content Include="Image\Default\Ter10.jpg" />
+    <Content Include="Image\Default\Ter11.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -379,12 +423,14 @@
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Order\IndexDone.cshtml" />
     <Content Include="Views\Product\ProductDetailCustomer.cshtml" />
+    <Content Include="Views\FeedBack\Create.cshtml" />
+    <Content Include="Views\FeedBack\Index.cshtml" />
+    <Content Include="Views\FeedBack\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\Product\" />
     <Folder Include="Image\User\" />
-    <Folder Include="Views\FeedBack\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
